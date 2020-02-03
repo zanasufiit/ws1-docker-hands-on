@@ -1,0 +1,3 @@
+FROM zanasufiit/ws-ukazka-layers-3
+
+COPY file3.txt .
