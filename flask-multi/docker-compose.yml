@@ -28,10 +28,10 @@ services:
     volumes: 
       - ./db-init.sql:/docker-entrypoint-initdb.d/init.sql
 
-#  pgadmin:
-#    image: dpage/pgadmin4
-#    environment:
-#      - PGADMIN_DEFAULT_EMAIL=ahoj@kamko.dev
-#      - PGADMIN_DEFAULT_PASSWORD=pass123
-#    ports:
-#    - 20000:80
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=ahoj@kamko.dev
+      - PGADMIN_DEFAULT_PASSWORD=pass123
+    ports:
+    - l:80
