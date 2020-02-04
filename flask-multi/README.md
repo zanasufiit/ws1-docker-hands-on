@@ -26,7 +26,7 @@ Docker-compose nam umoznuje pomocou yml definovat ako sa ma spustit viacero kont
 - moznost templatovat compose file
 - moznost spustat iba cast zo servicov
 
-A ovela viac dokumentacia pomoze o dost viac:
+A ovela viac dokumentacia pomoze viac:
 - https://docs.docker.com/compose/
 
 ## Kedy pouzit compose?
@@ -36,3 +36,17 @@ A ovela viac dokumentacia pomoze o dost viac:
 4. na spustenie environmentu pre testovanie
 
 Vsetko co sa da urobit cez compose je mozne urobit aj cez CLI ale je to omnoho jednoduchsie.
+
+## Nas priklad
+
+Nas priklad ([docker-compose.yml](docker-compose.yml)) sa sklada z 4 servicov (kontajnerov).
+
+1. server
+    - ziskava data z druhej service
+    - data uklada do databazy (co je tiez dalsia service)
+2. file-reader
+    - ukazka ako pouzit `bind mount` a zdielat subor z hosta s kontajnerom
+3. databaza
+    - jednoduchy setup postgresql
+4. pgadmin
+    - priklad zaujimaveho kontajneru na spravu veci
