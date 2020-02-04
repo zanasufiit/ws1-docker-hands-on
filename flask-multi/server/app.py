@@ -9,7 +9,7 @@ app = Flask(__name__)
 def read_file():
     reader_url = os.getenv('FILE_READER_URL')
 
-    print(f'getting content from f{reader_url}')
+    print(f'getting content from f{reader_url}', flush=True)
     text = requests.get(reader_url).text
 
     save_to_pg(text)
@@ -20,7 +20,7 @@ def save_to_pg(text):
 
     cur = con.cursor()
     cur.execute('INSERT INTO file_content(content) VALUES (%s)', (text,))
-    
+
     con.commit()
     
 
