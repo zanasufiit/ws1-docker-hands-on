@@ -16,3 +16,23 @@ Predpokladame, ze vsetko je v kontajneroch.
 
 ## Riesenie:
 Definovat celu strukturu pomocou docker-compose. Umoznuje nam to zapnut cely system naraz.
+
+Docker-compose nam umoznuje pomocou yml definovat ako sa ma spustit viacero kontajnerov. Medzi najvacsie vyhody patri, ze automaticky riesi hlavne tieto problemy
+
+- vsetko sa da zapnut jednym prikazom `docker-compose up` a vypnut a zmazat pomocou `docker-compose down`
+- zosietuje vsetky services (kontajnery) v danom compose (hostname je nazov servicu)
+- moznost pouzivat relativne adresy pri volumes (z docker cli je nutne absolutne) napr. `./file-reader/content.txt:/vol/content.txt`
+- pekny pristup k logom pomocou `docker-compose logs`
+- moznost templatovat compose file
+- moznost spustat iba cast zo servicov
+
+A ovela viac dokumentacia pomoze o dost viac:
+- https://docs.docker.com/compose/
+
+## Kedy pouzit compose?
+1. ak mame jednoduchy deployment na server
+2. ak chceme jednoducho spustit viacero kontajnerov a nehrat sa s nastavenim sieti
+3. lokalny development (ak potrebujeme napr. databazy)
+4. na spustenie environmentu pre testovanie
+
+Vsetko co sa da urobit cez compose je mozne urobit aj cez CLI ale je to omnoho jednoduchsie.
