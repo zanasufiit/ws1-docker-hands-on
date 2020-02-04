@@ -1,0 +1,29 @@
+version: "3.7"
+services: 
+  server:
+    build: server
+    ports:
+      - 5000:5000
+    environment: 
+      - FILE_READER_URL=http://file-reader:5000/
+      - POSTGRES_URI=postgresql://database:5432/znf?user=znf-user&password=pass123
+
+  file-reader:
+    build: file-reader
+    expose: 
+      - 5000
+    volumes: 
+      - ./file-reader/content.txt:/vol/content.txt
+
+  database:
+    image: postgres:12.1
+    environment: 
+      - POSTGRES_DB=znf
+      - POSTGRES_USER=znf-user
+      - POSTGRES_PASSWORD=pass123
+    expose: 
+      - 5432
+    ports: 
+      - 10000:5432
+    volumes: 
+      - ./db-init.sql:/docker-entrypoint-initdb.d/init.sql
